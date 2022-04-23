@@ -1,0 +1,64 @@
+<h2>Template: Basics</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!-- Form -->
+    <form (ngSubmit)="save()" #myForm="ngForm" autocomplete="off">
+      <!-- Product -->
+      <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Product</label>
+        <div class="col-sm-9">
+          <input type="text" name="product" class="form-control" placeholder="Product name" minlength="3" ngModel
+            required>
+          <span *ngIf="valid_name()" class="form-text text-danger">
+            * The product name must have at least 3 characters.
+          </span>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Product price</label>
+        <div class="col-sm-9">
+          <input type="number" name="product_price" class="form-control" min="0" placeholder="Product price" ngModel required>
+          <span *ngIf="valid_price()" class="form-text text-danger">
+            * The price must be greater than 0.
+          </span>
+        </div>
+      </div>
+
+      <!-- Available products -->
+      <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Available products</label>
+        <div class="col-sm-9">
+          <input type="number" name="available_product" class="form-control" placeholder="Available products" ngModel
+            required>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="row">
+        <div class="col">
+          <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary float-end">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{myForm.valid}}</pre>
+
+    <span>Pristine</span>
+    <pre>{{myForm.pristine}}</pre>
+
+    <span>Touched</span>
+    <pre>{{myForm.touched}}</pre>
+
+    <span>Value</span>
+    <pre>{{myForm.value | json}}</pre>
+  </div>
+</div>
